@@ -1,73 +1,79 @@
-# React + TypeScript + Vite
+# Santa Shuffle 🎅
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and fun Secret Santa gift exchange organizer. Create exchanges, add participants, draw names randomly, and manage wishlists — all in one place.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Create Exchanges** — Set up gift exchanges with a name, budget, and date
+- **Add Participants** — Invite friends and family with their name and email
+- **Random Drawing** — Fair, random Secret Santa assignments with one click
+- **Wishlists** — Participants can add gift ideas to help their Secret Santa
+- **Reveal Cards** — Privately reveal who you're giving a gift to
+- **Local Storage** — Your data stays on your device, no account needed
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 18** with TypeScript
+- **Vite** for fast development
+- **Tailwind CSS** for styling
+- **Framer Motion** for animations
+- **React Router** for navigation
+- **shadcn/ui** components
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Install dependencies
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run development server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+│   ├── ui/              # shadcn/ui base components
+│   ├── Hero.tsx         # Landing page hero section
+│   ├── Navbar.tsx       # Navigation bar
+│   ├── ParticipantForm.tsx
+│   ├── AssignmentReveal.tsx
+│   └── WishlistManager.tsx
+├── context/
+│   └── ExchangeContext.tsx   # State management + types
+├── hooks/
+│   └── use-toast.tsx    # Toast notifications
+├── pages/
+│   ├── Home.tsx         # Landing page
+│   ├── CreateExchange.tsx
+│   ├── ExchangeDetail.tsx
+│   ├── ExchangesList.tsx
+│   └── NotFound.tsx
+├── lib/
+│   └── utils.ts         # Utility functions
+└── App.tsx              # Main app with routing
+```
+
+## How It Works
+
+1. **Create an Exchange** — Give it a name, set a budget, pick a date
+2. **Add Participants** — Enter names and emails of everyone joining
+3. **Draw Names** — Click to randomly assign Secret Santas
+4. **Share Wishlists** — Each person can add gift ideas
+5. **Reveal Assignments** — Privately see who you're buying for
+
+## License
+
+MIT
